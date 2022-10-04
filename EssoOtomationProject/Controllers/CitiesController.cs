@@ -6,6 +6,7 @@ using EssoOtomationProject.Wrappers;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace EssoOtomationProject.Controllers
 {
@@ -24,39 +25,79 @@ namespace EssoOtomationProject.Controllers
         [HttpGet("Get")]
         public async Task<ActionResult<Response<City>>> GetAllCity([FromQuery] PaginationFilter filter)
         {
-            var result = await _mediator.Send(new GetAllCitiesQuery() { Filter = filter });
-            return Ok(result);
+            try
+            {
+                var result = await _mediator.Send(new GetAllCitiesQuery() { Filter = filter });
+                return Ok(result);
+            }
+            catch(Exception ex)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message); ;
+            }
+            
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<City>> GetCity(int id)
         {
-            var result = await _mediator.Send(new GetCityByIdQuery { Id = id });
-            return Ok(result);
+            try
+            {
+                var result = await _mediator.Send(new GetCityByIdQuery { Id = id });
+                return Ok(result);
+            }
+            catch(Exception ex)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
+            }
+            
         }
 
         [HttpPut("Update")]
         public async Task<IActionResult> PutCity([FromBody] City city)
         {
-            var command = new UpdateCityCommand() { UpdateCity = city };
-            var result = await _mediator.Send(command);
-            return Ok(result);
+            try
+            {
+                var command = new UpdateCityCommand() { UpdateCity = city };
+                var result = await _mediator.Send(command);
+                return Ok(result);
+            }
+            catch(Exception ex)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
+            }
+            
         }
 
         [HttpPost("Create")]
         public async Task<ActionResult<City>> PostCity([FromBody] City city)
         {
-            var command = new CreateCityCommand() { City = city };
-            var result = await _mediator.Send(command);
-            return Ok(result);
+            try
+            {
+                var command = new CreateCityCommand() { City = city };
+                var result = await _mediator.Send(command);
+                return Ok(result);
+            }
+            catch(Exception ex)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
+            }
+            
         }
 
         [HttpDelete("Delete/{id}")]
         public async Task<IActionResult> DeleteCity(int id)
         {
-            var command = new DeleteCityCommand() { Id = id };
-            var result = await _mediator.Send(command);
-            return Ok(result);
+            try
+            {
+                var command = new DeleteCityCommand() { Id = id };
+                var result = await _mediator.Send(command);
+                return Ok(result);
+            }
+            catch(Exception ex)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
+            }
+            
         }
     }
 }

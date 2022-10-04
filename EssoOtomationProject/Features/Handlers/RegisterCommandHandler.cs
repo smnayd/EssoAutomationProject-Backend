@@ -21,8 +21,6 @@ namespace EssoOtomationProject.Features.Handlers
         public async Task<RegisterDto> Handle(RegisterCommand request, CancellationToken cancellationToken)
         {
             var user = new User();
-            user.FirstName = request.FirstName;
-            user.LastName = request.LastName;
             user.Email = request.Email;
             user.Password = request.Password;
             user.UserName = request.UserName;
