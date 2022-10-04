@@ -27,25 +27,49 @@ namespace EssoOtomationProject.Controllers
         [Route("Login")]
         public async Task<IActionResult> Login([FromBody] LoginCommand command)
         {
-            var result = await _mediator.Send(command);
-            return Ok(result);
+            try
+            {
+                var result = await _mediator.Send(command);
+                return Ok(result);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex);
+            }
+            
+            
         }
 
         [HttpGet]
         [Route("Get/{id}")]
         public async Task<ActionResult<User>> GetUser(int id)
         {
-            var result = await _mediator.Send(new GetUserByIdQuery { Id = id });
-            return Ok(result);
+            try
+            {
+                var result = await _mediator.Send(new GetUserByIdQuery { Id = id });
+                return Ok(result);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex);
+            }
         }
 
         [HttpPut]
         [Route("Update")]
         public async Task<IActionResult> PutUser([FromBody] User user)
         {
-            var command = new UpdateUserCommand() { UpdateUser = user };
-            var result = await _mediator.Send(command);
-            return Ok(result);
+            try
+            {
+                var command = new UpdateUserCommand() { UpdateUser = user };
+                var result = await _mediator.Send(command);
+                return Ok(result);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex);
+            }
+            
         }
 
         [HttpPost]
@@ -53,8 +77,16 @@ namespace EssoOtomationProject.Controllers
         [Route("Registration")]
         public async Task<IActionResult> Registration([FromBody] RegisterCommand command)
         {
-            var result = await _mediator.Send(command);
-            return Ok(result);
+            try
+            {
+                var result = await _mediator.Send(command);
+                return Ok(result);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex);
+            }
+            
 
         }
 
@@ -62,9 +94,17 @@ namespace EssoOtomationProject.Controllers
         [Route("Delete/{id}")]
         public async Task<IActionResult> DeleteUser(int id)
         {
-            var command = new DeleteUserCommand() { Id = id };
-            var result = await _mediator.Send(command);
-            return Ok(result);
+            try
+            {
+                var command = new DeleteUserCommand() { Id = id };
+                var result = await _mediator.Send(command);
+                return Ok(result);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex);
+            }
+            
         }
 
     }

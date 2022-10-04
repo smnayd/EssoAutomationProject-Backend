@@ -24,39 +24,79 @@ namespace EssoOtomationProject.Controllers
         [HttpGet("Get")]
         public async Task<ActionResult<Response<Country>>> GetAllCountry([FromQuery] PaginationFilter filter)
         {
-            var result = await _mediator.Send(new GetAllCountriesQuery() { Filter = filter });
-            return Ok(result);
+            try
+            {
+                var result = await _mediator.Send(new GetAllCountriesQuery() { Filter = filter });
+                return Ok(result);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex);
+            }
+            
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Country>> GetCountry(int id)
         {
-            var result = await _mediator.Send(new GetCountryByIdQuery { Id = id });
-            return Ok(result);
+            try
+            {
+                var result = await _mediator.Send(new GetCountryByIdQuery { Id = id });
+                return Ok(result);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex);
+            }
+            
         }
 
         [HttpPut("Update")]
         public async Task<IActionResult> PutCountry([FromBody] Country country)
         {
-            var command = new UpdateCountryCommand() { UpdateCountry = country };
-            var result = await _mediator.Send(command);
-            return Ok(result);
+            try
+            {
+                var command = new UpdateCountryCommand() { UpdateCountry = country };
+                var result = await _mediator.Send(command);
+                return Ok(result);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex);
+            }
+            
         }
 
         [HttpPost("Create")]
         public async Task<ActionResult<Country>> PostCountry([FromBody] Country country)
         {
-            var command = new CreateCountryCommand() { Country = country };
-            var result = await _mediator.Send(command);
-            return Ok(result);
+            try
+            {
+                var command = new CreateCountryCommand() { Country = country };
+                var result = await _mediator.Send(command);
+                return Ok(result);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex);
+            }
+            
         }
 
         [HttpDelete("Delete/{id}")]
         public async Task<IActionResult> DeleteCountry(int id)
         {
-            var command = new DeleteCountryCommand() { Id = id };
-            var result = await _mediator.Send(command);
-            return Ok(result);
+            try
+            {
+                var command = new DeleteCountryCommand() { Id = id };
+                var result = await _mediator.Send(command);
+                return Ok(result);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex);
+            }
+            
         }
     }
 }

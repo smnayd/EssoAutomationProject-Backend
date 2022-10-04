@@ -24,39 +24,79 @@ namespace EssoOtomationProject.Controllers
         [HttpGet("Get")]
         public async Task<ActionResult<Response<City>>> GetAllCity([FromQuery] PaginationFilter filter)
         {
-            var result = await _mediator.Send(new GetAllCitiesQuery() { Filter = filter });
-            return Ok(result);
+            try
+            {
+                var result = await _mediator.Send(new GetAllCitiesQuery() { Filter = filter });
+                return Ok(result);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex);
+            }
+            
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<City>> GetCity(int id)
         {
-            var result = await _mediator.Send(new GetCityByIdQuery { Id = id });
-            return Ok(result);
+            try
+            {
+                var result = await _mediator.Send(new GetCityByIdQuery { Id = id });
+                return Ok(result);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex);
+            }
+            
         }
 
         [HttpPut("Update")]
         public async Task<IActionResult> PutCity([FromBody] City city)
         {
-            var command = new UpdateCityCommand() { UpdateCity = city };
-            var result = await _mediator.Send(command);
-            return Ok(result);
+            try
+            {
+                var command = new UpdateCityCommand() { UpdateCity = city };
+                var result = await _mediator.Send(command);
+                return Ok(result);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex);
+            }
+            
         }
 
         [HttpPost("Create")]
         public async Task<ActionResult<City>> PostCity([FromBody] City city)
         {
-            var command = new CreateCityCommand() { City = city };
-            var result = await _mediator.Send(command);
-            return Ok(result);
+            try
+            {
+                var command = new CreateCityCommand() { City = city };
+                var result = await _mediator.Send(command);
+                return Ok(result);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex);
+            }
+            
         }
 
         [HttpDelete("Delete/{id}")]
         public async Task<IActionResult> DeleteCity(int id)
         {
-            var command = new DeleteCityCommand() { Id = id };
-            var result = await _mediator.Send(command);
-            return Ok(result);
+            try
+            {
+                var command = new DeleteCityCommand() { Id = id };
+                var result = await _mediator.Send(command);
+                return Ok(result);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex);
+            }
+            
         }
     }
 }
