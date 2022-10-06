@@ -4,6 +4,7 @@ using EssoOtomationProject.DTOs;
 using EssoOtomationProject.Features.Commands;
 using EssoOtomationProject.Models;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace EssoOtomationProject.Features.Handlers
 {
@@ -21,12 +22,18 @@ namespace EssoOtomationProject.Features.Handlers
         public async Task<RegisterDto> Handle(RegisterCommand request, CancellationToken cancellationToken)
         {
             var user = new User();
-            user.Email = request.Email;
-            user.Password = request.Password;
-            user.UserName = request.UserName;
-            await _context.AddAsync(user);
-            await _context.SaveChangesAsync();
-            return _mapper.Map<RegisterDto>(user);
+            var check = await _context.User.FirstOrDefaultAsync(u => u.Email == request.Email);
+            if (check == null)
+            {
+                user.Email = request.Email;
+                user.Password = request.Password;
+                user.UserName = request.UserName;
+                await _context.AddAsync(user);
+                await _context.SaveChangesAsync();
+                return _mapper.Map<RegisterDto>(user);
+            }
+
+            return null;
         }
     }
 }
