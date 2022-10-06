@@ -35,7 +35,11 @@ namespace EssoOtomationProject.Controllers
             }
             catch(Exception ex)
             {
+<<<<<<< HEAD
                 return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
+=======
+                return BadRequest(ex);
+>>>>>>> 67d43f943a2034e933274a7bc9358cebce6c2c28
             }
             
             
@@ -52,7 +56,11 @@ namespace EssoOtomationProject.Controllers
             }
             catch(Exception ex)
             {
+<<<<<<< HEAD
                 return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
+=======
+                return BadRequest(ex);
+>>>>>>> 67d43f943a2034e933274a7bc9358cebce6c2c28
             }
         }
 
@@ -68,7 +76,11 @@ namespace EssoOtomationProject.Controllers
             }
             catch(Exception ex)
             {
+<<<<<<< HEAD
                 return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
+=======
+                return BadRequest(ex);
+>>>>>>> 67d43f943a2034e933274a7bc9358cebce6c2c28
             }
             
         }
@@ -85,7 +97,11 @@ namespace EssoOtomationProject.Controllers
             }
             catch(Exception ex)
             {
+<<<<<<< HEAD
                 return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
+=======
+                return BadRequest(ex);
+>>>>>>> 67d43f943a2034e933274a7bc9358cebce6c2c28
             }
             
 
@@ -103,7 +119,11 @@ namespace EssoOtomationProject.Controllers
             }
             catch(Exception ex)
             {
+<<<<<<< HEAD
                 return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
+=======
+                return BadRequest(ex);
+>>>>>>> 67d43f943a2034e933274a7bc9358cebce6c2c28
             }
             
         }
