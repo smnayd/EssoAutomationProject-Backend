@@ -24,7 +24,7 @@ namespace EssoOtomationProject.Features.Handlers
         {
             var usernameCheck = await _context.User.FirstOrDefaultAsync(u => u.UserName == request.UserName);
             var passwordCheck = await _context.User.FirstOrDefaultAsync(u => u.Password == request.Password);
-            if (usernameCheck == null && passwordCheck == null)
+            if (usernameCheck == null || passwordCheck == null)
             {
                 return new AuthenticationDto { HasError = true };
             }
