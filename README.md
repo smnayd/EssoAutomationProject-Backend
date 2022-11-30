@@ -1,6 +1,6 @@
 # Esso Otomation Application Project - Backend
 
-This project was my internship project. The project is creating a website to see cities and countries, and users may also create, delete or update a new city/country. 
+This project was my internship project. The project is creating a website to see cities and countries, and users may also create, delete or update a new or exist city/country. 
 
 In database,
 I used `Entity Framework First Code Approach`. I created 3 entities called user, city, country.
