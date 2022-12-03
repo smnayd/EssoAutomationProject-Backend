@@ -6,9 +6,15 @@ namespace EssoOtomationProject.Models
     [Table("Countries")]
     public class Country
     {
+        [Key]
         public int Id { get; set; }
 
         [Required]
-        public string CountryName { get; set; }
+        [StringLength(30)]
+        public string Name { get; set; }
+        
+        public ICollection<City> City { get; set; }
+
+
     }
 }

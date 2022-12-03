@@ -22,7 +22,7 @@ namespace EssoOtomationProject.Features.Handlers
 
         public async Task<AuthenticationDto> Handle(LoginCommand request, CancellationToken cancellationToken)
         {
-            var usernameCheck = await _context.User.FirstOrDefaultAsync(u => u.UserName == request.UserName);
+            var usernameCheck = await _context.User.FirstOrDefaultAsync(u => u.Name == request.Name);
             var passwordCheck = await _context.User.FirstOrDefaultAsync(u => u.Password == request.Password);
             if (usernameCheck == null || passwordCheck == null)
             {

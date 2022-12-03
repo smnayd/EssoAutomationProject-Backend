@@ -7,12 +7,12 @@ namespace EssoOtomationProject.Features.Commands
     {
         public RegisterCommand(string username, string password, string email)
         {
-            UserName = username;
+            Name = username;
             Password = password;
             Email = email;
         }
 
-        public string UserName { get; set; }
+        public string Name { get; set; }
         public string Password { get; set; }
         public string Email { get; set; }
     }

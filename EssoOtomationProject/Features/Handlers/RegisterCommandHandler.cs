@@ -27,7 +27,7 @@ namespace EssoOtomationProject.Features.Handlers
             {
                 user.Email = request.Email;
                 user.Password = request.Password;
-                user.UserName = request.UserName;
+                user.Name = request.Name;
                 await _context.AddAsync(user);
                 await _context.SaveChangesAsync();
                 return _mapper.Map<RegisterDto>(user);

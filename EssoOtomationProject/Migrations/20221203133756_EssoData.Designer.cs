@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EssoOtomationProject.Migrations
 {
     [DbContext(typeof(EssoContext))]
-    [Migration("20221123192926_EssoData")]
+    [Migration("20221203133756_EssoData")]
     partial class EssoData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -35,7 +35,12 @@ namespace EssoOtomationProject.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("CountryId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("CountryId");
 
                     b.ToTable("Cities");
                 });
@@ -80,6 +85,22 @@ namespace EssoOtomationProject.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("EssoOtomationProject.Models.City", b =>
+                {
+                    b.HasOne("EssoOtomationProject.Models.Country", "Country")
+                        .WithMany("City")
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Country");
+                });
+
+            modelBuilder.Entity("EssoOtomationProject.Models.Country", b =>
+                {
+                    b.Navigation("City");
                 });
 #pragma warning restore 612, 618
         }

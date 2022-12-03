@@ -17,7 +17,7 @@ namespace EssoOtomationProject.Features.Handlers
 
         public async Task<Country> Handle(CreateCountryCommand request, CancellationToken cancellationToken)
         {
-            var check = await _context.Country.FirstOrDefaultAsync(c => c.CountryName == request.Country.CountryName);
+            var check = await _context.Country.FirstOrDefaultAsync(c => c.Name == request.Country.Name);
             if (check != null)
             {
                 throw new InvalidOperationException("You cannot add the same value");

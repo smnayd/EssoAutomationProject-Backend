@@ -7,6 +7,8 @@ namespace EssoOtomationProject.Data
     {
         public EssoContext(DbContextOptions<EssoContext> options) : base(options)
         {
+            Database.EnsureDeleted();
+            Database.EnsureCreated();
         }
 
         public DbSet<User> User { get; set; }

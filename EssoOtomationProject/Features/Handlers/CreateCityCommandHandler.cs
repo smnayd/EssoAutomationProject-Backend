@@ -17,7 +17,7 @@ namespace EssoOtomationProject.Features.Handlers
 
         public async Task<City> Handle(CreateCityCommand request, CancellationToken cancellationToken)
         {
-            var check = await _context.City.FirstOrDefaultAsync(c => c.CityName == request.City.CityName);
+            var check = await _context.City.FirstOrDefaultAsync(c => c.Name == request.City.Name);
 
             if (check != null)
             {
