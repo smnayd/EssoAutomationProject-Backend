@@ -12,9 +12,6 @@ namespace EssoOtomationProject.Models
         [Required]
         [StringLength(30)]
         public string Name { get; set; }
-        
-        public ICollection<City> City { get; set; }
-
-
+       
     }
 }

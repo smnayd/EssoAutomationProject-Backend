@@ -12,7 +12,7 @@ namespace EssoOtomationProject.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class CountriesController : ControllerBase
     {
         private readonly IMediator _mediator;
