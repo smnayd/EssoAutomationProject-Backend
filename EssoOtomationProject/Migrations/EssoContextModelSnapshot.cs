@@ -39,6 +39,8 @@ namespace EssoOtomationProject.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CountryId");
+
                     b.ToTable("Cities");
                 });
 
@@ -86,6 +88,17 @@ namespace EssoOtomationProject.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("EssoOtomationProject.Models.City", b =>
+                {
+                    b.HasOne("EssoOtomationProject.Models.Country", "Country")
+                        .WithMany()
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Country");
                 });
 #pragma warning restore 612, 618
         }
