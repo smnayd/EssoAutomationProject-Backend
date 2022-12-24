@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EssoOtomationProject.Migrations
 {
     [DbContext(typeof(EssoContext))]
-    [Migration("20221214225605_EssoData")]
-    partial class EssoData
+    [Migration("20221224155550_FKAdded")]
+    partial class FKAdded
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
