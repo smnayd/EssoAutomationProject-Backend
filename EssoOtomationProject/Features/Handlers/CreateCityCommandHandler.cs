@@ -19,11 +19,6 @@ namespace EssoOtomationProject.Features.Handlers
         {
             var check = await _context.City.FirstOrDefaultAsync(c => c.Name == request.City.Name);
 
-            if (check != null)
-            {
-                throw new InvalidOperationException("You cannot add the same value!!!");
-            }
-
             _context.City.Add(request.City);
             await _context.SaveChangesAsync();
             return request.City;

@@ -14,9 +14,7 @@ namespace EssoOtomationProject.Models
         [StringLength(30)]
         public string Name { get; set; }
 
-      
         public int CountryId { get; set; }
-        public Country Country { get; set; }
-
+        
     }
 }
